@@ -1,0 +1,226 @@
+/* Font */
+@font-face {
+    font-family: "BebasNeue";
+    src: url("../Galeri/font/bebasneue-regular-webfont.woff") format("woff");
+}
+
+/* Style Utama */
+body {
+    font: 18px/36px "BebasNeue", "Arial Narrow", Arial, Helvetica, sans-serif;
+    background-color: #20202A;
+}
+
+h1 {
+    font-size: 70px;
+    text-align: center;
+    margin: 50px 0;
+    color: white;
+    text-shadow: 4px 4px 10px #000;
+}
+
+.container {
+    width: 600px;
+    background-color: #1D1C25;
+    margin: auto;
+    box-shadow: 0 0 10px 1px rgba(0,0,0,.8);
+    border-radius: 5px 5PX 0 0;
+    padding: 30px;
+}
+
+.gallery li,
+.gallery li a img,
+.gallery li span {
+    border-radius: 50%;
+}
+
+.gallery li {
+    width: 120px;
+    height: 120px;
+    /* border: 3px solid #1D1C25; */
+    float: left;
+    margin-right: 24px;
+    position: relative;
+    box-shadow: 0 0 10px #000000;
+}
+
+.gallery li span {
+    width: 120px;
+    height: 120px;
+    background-color: rgba(0,0,0,.15);
+    display: block;
+    opacity: 0;
+    line-height: 120px;
+    text-align: center;
+    text-shadow: 1px 1px #000;
+    color: #fff;
+    position: absolute;
+    top: 0;
+    transition: 300ms;
+    transform: rotate(0) scale(0);
+}
+
+.gallery li a:hover span {
+    transform: rotate(360deg) scale(1); 
+    opacity: 1;
+}
+.gallery a img{
+	transition: .1s;
+}
+.gallery li a:hover img{
+	transform: scale(.98);
+}
+
+/* Overlay */
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    text-align: center;
+    padding: 100px 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    background-color: rgba(0,0,0,0);
+    transition: 500ms;
+}
+
+.overlay:target {
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0; 
+    background-color: rgba(3,3,3,.7);
+}
+
+.overlay img {
+    max-height: 100%;
+    box-shadow: 3px 3px 3px rgba(0, 0, 0, .7);
+}
+
+.overlay:target img {
+    animation: fade 1s;
+}
+
+.overlay .close {
+    position: absolute;
+    top: 65px;
+    left: 50%;
+    margin-left: -20px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 1px 1px 2px #000;
+    background-color: #a10000;
+    line-height: 14px;
+    border: 1px solid white;
+    padding: 5px;
+    opacity: 0;
+    box-shadow: 1px 1px 1px white;
+}
+
+.overlay .close:hover{
+    filter: saturate(200%);
+}
+
+.overlay:target .close {
+    animation: slidedown .5s .5s forwards;
+}
+
+.overlay:target .next,
+.overlay:target .prev {
+    animation: fadedoang .5s .5s forwards;
+}
+
+/* Navigasi */
+.next, .prev {
+    width: 57px;
+    height: 93px;
+    background-image: url("../img/next.png");
+    text-indent: -99999px;
+    position: absolute;
+    top: 40%;
+    margin-left: 20px;
+    opacity: 0;
+}
+.prev {
+    background-image: url("../img/previous.png");
+    margin-left: -75px;
+}
+.prev:hover {
+    filter: saturate(200%);
+}
+.next:hover {
+    filter: saturate(200%);
+}
+/* Animasi */
+@keyframes fadedoang {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes fade {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes slidedown {
+    0% {
+        margin-top: -20px;
+        opacity: 0;
+    }
+    100% {
+        margin-top: 0;
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/* CSS Clear */
+/**
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    contenteditable attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that are clearfixed.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+ .cf:before,
+ .cf:after {
+     content: " "; /* 1 */
+     display: table; /* 2 */
+ }
+ 
+ .cf:after {
+     clear: both;
+ }
+ 
+ /**
+  * For IE 6/7 only
+  * Include this rule to trigger hasLayout and contain floats.
+  */
+ .cf {
+     *zoom: 1;
+ }
